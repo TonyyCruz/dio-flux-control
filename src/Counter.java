@@ -1,8 +1,8 @@
-import exceptions.InvalidParameters;
+import exceptions.InvalidParametersException;
 
 import java.util.Scanner;
 
-public class Main {
+public class Counter {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.print("Input the first parameter: ");
@@ -12,14 +12,14 @@ public class Main {
 
         try {
             count(firstParameter, secondParameter);
-        }catch (InvalidParameters e) {
+        }catch (InvalidParametersException e) {
             System.out.println(e.getMessage());
         }
 
     }
-    static void count(int firstParameter, int secondParameter ) throws InvalidParameters {
+    static void count(int firstParameter, int secondParameter ) throws InvalidParametersException {
         int count = secondParameter - firstParameter;
-        if (count <= 0) { throw new InvalidParameters("The second parameter must be grater than the first."); }
+        if (count <= 0) { throw new InvalidParametersException("The second parameter must be grater than the first."); }
         for (int num = 1; num <= count; num++) { System.out.println("printing number " + num); }
     }
 }
